@@ -12,7 +12,7 @@ You can view the site at [stickers.advaith.io](https://stickers.advaith.io).
 
 Requires [Node.js](https://nodejs.org) 14+, [TypeScript](https://typescriptlang.org), [pnpm](https://pnpm.js.org), and [Sass](https://sass-lang.com). You must also have a [Discord bot application](https://discord.com/developers).
 
-1. Fill out the `.env` file
+1. Rename `.env.example` to `.env` and fill it out
 2. Install dependencies with `pnpm i`
 3. Compile the TypeScript code with `tsc`
 4. Compile the Sass code with `pnpm run sass`
