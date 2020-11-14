@@ -1,0 +1,8 @@
+{
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "moduleResolution": "node",
+        "outDir": "out",
+        "target": "ES2020"
+    }
+}

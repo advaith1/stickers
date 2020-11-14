@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Discord Sticker List</title>
+		<meta name="description" content="All the currently available Discord stickers">
+		<link rel="stylesheet" href="/style.css">
+	</head>
+	<body>
+		<section class="hero">
+			<div class="hero-body">
+				<div class="container is-fluid">
+					<h1 class="title is-2">
+						Discord Sticker List
+					</h1>
+					<p class="subtitle is-4">
+						All the currently available <a target="_blank" rel="noopener" href="https://dis.gd/stickerswhen">Discord stickers</a>
+					</p>
+					<p class="is-size-5">
+						Hover over a sticker to show its tags
+					</p>
+				</div>
+			</div>
+		</section>
+		<section class="section">
+			<div class="container is-fluid">
+				<div class="columns">
+					<% data.sticker_packs?.map(pack => { %>
+						<div class="column">
+							<h2 class="title is-4"><%= pack.name %></h2>
+							<% pack.stickers.sort((a, b) => a.name.localeCompare(b.name)).map(sticker => { %>
+								<p><span class="has-tooltip-arrow" data-tooltip="<%= sticker.tags %>"><%= sticker.name %></span></p>
+							<% }) %>
+						</div>
+					<% }) %>
+				</div>
+			</div>
+		</section>
+		<footer class="footer is-size-5">
+			Created by <a href="https://advaith.io" target="_blank" rel="noopener">Advaith</a>
+		</footer>
+	</body>
+</html>
