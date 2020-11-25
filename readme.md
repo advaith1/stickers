@@ -15,5 +15,5 @@ Requires [Node.js](https://nodejs.org) 14+, [TypeScript](https://typescriptlang.
 1. Rename `.env.example` to `.env` and fill it out
 2. Install dependencies with `pnpm i`
 3. Compile the TypeScript code with `tsc`
-4. Compile the Sass code with `pnpm run sass`
+4. Compile the Sass code with `pnpm sass`
 5. Run with `pnpm start`
