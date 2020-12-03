@@ -14,7 +14,7 @@ let cache: {
 
 app.get('/', async (_, res) => {
 	if(!cache.data || Date.now() - cache.lastUpdated > 30000) {
-		const r = await fetch('https://discord.com/api/v8/sticker-packs/directory/758482250722574376', {headers: {authorization: `Bot ${token}`}})
+		const r = await fetch('https://discord.com/api/v8/sticker-packs/directory-v2/758482250722574376', {headers: {authorization: `Bot ${token}`}})
 		cache.data = await r.json()
 		cache.lastUpdated = Date.now()
 	}
