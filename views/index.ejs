@@ -5,8 +5,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Discord Sticker List</title>
 		<meta name="description" content="All the currently available Discord stickers">
+		<link rel="shortcut icon" type="image/svg+xml" href="/icon.png">
+		<meta name="og:image" content="https://stickers.advaith.io/icon.png">
 		<link rel="stylesheet" href="/style.css">
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-5J8X1H60G1"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.6/lottie.min.js" integrity="sha512-BB7rb8ZBAxtdJdB7nwDijJH9NC+648xSzviK9Itm+5APTtdpgKz1+82bDl4znz/FBhd0R7pJ/gQtomnMpZYzRw==" crossorigin="anonymous"></script>
+		<script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
 		<script>
 			window.dataLayer = window.dataLayer || [];
 			function gtag(){dataLayer.push(arguments);}
@@ -19,26 +23,40 @@
 		<section class="hero">
 			<div class="hero-body">
 				<div class="container is-fluid">
-					<h1 class="title is-2">
-						Discord Sticker List
-					</h1>
-					<p class="subtitle is-4">
-						All the currently available <a target="_blank" rel="noopener" href="https://dis.gd/stickerswhen">Discord stickers</a>
-					</p>
-					<p class="is-size-5">
-						Hover over a sticker to show its tags
-					</p>
+					<div class="columns">
+						<div class="column is-three-quarters">
+							<h1 class="title is-2">
+								Discord Sticker List
+							</h1>
+							<p class="subtitle is-4">
+								All the currently available <a target="_blank" rel="noopener" href="https://dis.gd/stickerswhen">Discord stickers</a>
+							</p>
+							<p class="is-size-5 mb-1">
+								Hover over a sticker to show it
+							</p>
+							<p id="info" class="is-size-5">
+								Name: <span id="name"></span><br>
+								Description: <span id="description"></span><br>
+								Tags: <span id="tags"></span><br>
+							</p>
+						</div>
+						<div id="img-col" class="column">
+							<img id="img" src="" alt="Sticker Image" width="160" height="160" draggable="false">
+							<div id="lottie"></div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>
-		<section class="section">
+		<section class="section pt-0">
 			<div class="container is-fluid">
 				<div class="columns">
 					<% data.sticker_packs?.map(pack => { %>
 						<div class="column">
+							<img src="https://cdn.discordapp.com/app-assets/710982414301790216/store/<%= pack.store_listing.thumbnail.id %>.png?size=1024" width="440" height="100" alt="">
 							<h2 class="title is-4"><%= pack.name %></h2>
 							<% pack.stickers.sort((a, b) => a.name.localeCompare(b.name)).map(sticker => { %>
-								<p><span class="has-tooltip-arrow" data-tooltip="<%= sticker.tags %>"><%= sticker.name %></span></p>
+								<p><span class="sticker" data-id="<%= sticker.id %>" data-type="<%= sticker.format_type %>" data-asset="<%= sticker.asset %>" data-description="<%= sticker.description %>" data-tags="<%= sticker.tags %>"><%= sticker.name %></span></p>
 							<% }) %>
 						</div>
 					<% }) %>
@@ -48,5 +66,35 @@
 		<footer class="footer is-size-5">
 			Created by <a href="https://advaith.io" target="_blank" rel="noopener">Advaith</a> <span class="spacer"></span> • <span class="spacer"></span> <a href="https://github.com/advaith1/stickers" target="_blank" rel="noopener">GitHub</a> <span class="spacer"></span> • <span class="spacer"></span> Not affiliated with Discord
 		</footer>
+		<script>
+			const info = document.getElementById('info')
+			const name = document.getElementById('name')
+			const description = document.getElementById('description')
+			const tags = document.getElementById('tags')
+			const img = document.getElementById('img')
+			const container = document.getElementById('lottie')
+			document.querySelectorAll('.sticker').forEach(e => {
+				e.addEventListener('mouseover', event => {
+					const sticker = event.target.dataset
+					name.innerText = event.target.innerText
+					description.innerText = sticker.description
+					tags.innerText = sticker.tags
+					twemoji.parse(info, {folder: 'svg', ext: '.svg'})
+					if (sticker.type != 3) {
+						lottie.destroy()
+						img.src = `https://cdn.discordapp.com/stickers/${sticker.id}/${sticker.asset}.png`
+					} else {
+						img.src = ''
+						lottie.destroy()
+						lottie.loadAnimation({
+							container,
+							path: `lottie/${sticker.id}/${sticker.asset}`,
+							renderer: 'svg'
+						})
+					}
+				})
+			})
+			img.addEventListener('contextmenu', event => event.preventDefault())
+		</script>
 	</body>
 </html>

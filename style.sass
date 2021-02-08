@@ -1,16 +1,24 @@
-span
-	border-bottom: none !important
-	cursor: default !important
-
 .spacer
 	width: 5px
 	display: inline-block
 
-@import "node_modules/bulma/sass/utilities/_all"
+#img[src=""]
+	display: none
 
-@media screen and (min-width: $tablet)
-	.columns
-		margin-left: 3rem !important
+#lottie 
+	max-width: 160px
+	max-height: 160px
+
+#img-col
+	margin-top: auto
+
+.emoji
+	height: 1em
+	width: 1em
+	margin: 0 .05em 0 .1em
+	vertical-align: -0.1em
+
+@import "node_modules/bulma/sass/utilities/_all"
 
 $scheme-main: #141414
 $text: $white-ter
@@ -18,11 +26,9 @@ $text-strong: $white-ter
 $link: $cyan
 $link-hover: $blue
 $footer-background-color: transparent
-$tooltip-background-color: #000000
 
 @import "node_modules/bulma/sass/base/_all"
 @import "node_modules/bulma/sass/elements/_all"
 @import "node_modules/bulma/sass/grid/_all"
 @import "node_modules/bulma/sass/helpers/_all"
 @import "node_modules/bulma/sass/layout/_all"
-@import 'node_modules/@creativebulma/bulma-tooltip/src/sass'

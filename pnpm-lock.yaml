@@ -1,5 +1,4 @@
 dependencies:
-  '@creativebulma/bulma-tooltip': 1.2.0
   bulma: 0.9.1
   dotenv: 8.2.0
   ejs: 3.1.5
@@ -10,10 +9,6 @@ devDependencies:
   '@types/node-fetch': 2.5.7
 lockfileVersion: 5.2
 packages:
-  /@creativebulma/bulma-tooltip/1.2.0:
-    dev: false
-    resolution:
-      integrity: sha512-ooImbeXEBxf77cttbzA7X5rC5aAWm9UsXIGViFOnsqB+6M944GkB28S5R4UWRqjFd2iW4zGEkEifAU+q43pt2w==
   /@types/body-parser/1.19.0:
     dependencies:
       '@types/connect': 3.4.33
@@ -603,7 +598,6 @@ packages:
     resolution:
       integrity: sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
 specifiers:
-  '@creativebulma/bulma-tooltip': ^1.2.0
   '@types/express': ^4.17.9
   '@types/node-fetch': ^2.5.7
   bulma: ^0.9.1
