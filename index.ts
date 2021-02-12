@@ -28,7 +28,7 @@ app.get('/lottie/:id/:asset', async (req, res) => {
 
 app.get('/style.css', (_, res) => res.sendFile(path.resolve('out/style.css')))
 
-app.get('/icon.png', (_, res) => res.sendFile(path.resolve('icon.png')))
+app.use('/img', express.static(path.resolve('img')))
 
 app.use((_, res) => res.status(404).render('404'))
 
