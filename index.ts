@@ -30,6 +30,12 @@ app.get('/style.css', (_, res) => res.sendFile(path.resolve('out/style.css')))
 
 app.use('/img', express.static(path.resolve('img')))
 
+app.get('/arc-sw.js', async (_, res) => {
+	res.type('text/javascript')
+	const r = await fetch('https://arc.io/arc-sw.js')
+	r.body.pipe(res)
+})
+
 app.use((_, res) => res.status(404).render('404'))
 
 app.listen(process.env.PORT, () => console.log('✔ started!'))
