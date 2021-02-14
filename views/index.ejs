@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,7 +9,7 @@
 		<meta name="og:image" content="https://stickers.advaith.io/img/icon.png">
 		<link rel="stylesheet" href="/style.css">
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-5J8X1H60G1"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.6/lottie.min.js" integrity="sha512-BB7rb8ZBAxtdJdB7nwDijJH9NC+648xSzviK9Itm+5APTtdpgKz1+82bDl4znz/FBhd0R7pJ/gQtomnMpZYzRw==" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.6/lottie_light.min.js" integrity="sha512-u17Fj9cQ8L0qSebNF1zhbeAvbqSUBhX3jILF5zuZh2omdVev/zlHMeW0f2fDSW4o+/kbin6ZA9LtLfaXS0WIlQ==" crossorigin="anonymous"></script>
 		<script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
 		<script>
 			window.dataLayer = window.dataLayer || [];
@@ -54,7 +54,11 @@
 				<div class="columns">
 					<% data.sticker_packs?.map(pack => { %>
 						<div class="column">
-							<img src="https://cdn.discordapp.com/app-assets/710982414301790216/store/<%= pack.store_listing.thumbnail.id %>.png?size=1024" width="440" height="100" alt="">
+							<picture>
+								<source srcset="https://cdn.discordapp.com/app-assets/710982414301790216/store/<%= pack.store_listing.thumbnail.id %>.webp?size=512" type="image/webp">
+								<source srcset="https://cdn.discordapp.com/app-assets/710982414301790216/store/<%= pack.store_listing.thumbnail.id %>.png?size=512" type="image/png">
+								<img src="https://cdn.discordapp.com/app-assets/710982414301790216/store/<%= pack.store_listing.thumbnail.id %>.png?size=512" width="440" height="100" alt="">
+							</picture>
 							<h2 class="title is-4"><%= pack.name %></h2>
 							<% pack.stickers.sort((a, b) => a.name.localeCompare(b.name)).map(sticker => { %>
 								<p><span class="sticker" data-id="<%= sticker.id %>" data-type="<%= sticker.format_type %>" data-asset="<%= sticker.asset %>" data-description="<%= sticker.description %>" data-tags="<%= sticker.tags %>"><%= sticker.name %></span></p>
@@ -65,7 +69,7 @@
 			</div>
 		</section>
 		<footer class="footer is-size-5">
-			Created by <a href="https://advaith.io" target="_blank" rel="noopener">Advaith</a> <span class="spacer"></span> • <span class="spacer"></span> <a href="https://twitter.com/DiscordStickers" target="_blank" rel="noopener"><img class="emoji" src="/img/twitter.svg" alt="Twitter"> @DiscordStickers</a> <span class="spacer"></span> • <span class="spacer"></span> <a href="https://github.com/advaith1/stickers" target="_blank" rel="noopener">Source on GitHub</a> <span class="spacer"></span> • <span class="spacer"></span> Not affiliated with Discord
+			Created by <a href="https://advaith.io" target="_blank" rel="noopener">Advaith</a> <span class="spacer"></span> • <span class="spacer"></span> <a href="https://twitter.com/DiscordStickers" target="_blank" rel="noopener"><img id="twitter" src="/img/twitter.svg" alt="Twitter" width="248" height="204"> @DiscordStickers</a> <span class="spacer"></span> • <span class="spacer"></span> <a href="https://github.com/advaith1/stickers" target="_blank" rel="noopener">Source on GitHub</a> <span class="spacer"></span> • <span class="spacer"></span> Not affiliated with Discord
 		</footer>
 		<script>
 			const info = document.getElementById('info')
