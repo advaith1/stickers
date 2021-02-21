@@ -13,7 +13,7 @@ let cache: {
 } = {}
 
 app.get('/', async (_, res) => {
-	if(!cache.data || Date.now() - cache.lastUpdated > 30000) {
+	if(!cache.data || Date.now() - cache.lastUpdated > 300000) {
 		const r = await fetch('https://discord.com/api/v8/sticker-packs/directory-v2/758482250722574376?with_store_listings=true', {headers: {authorization: `Bot ${token}`}})
 		cache.lastUpdated = Date.now()
 		fs.writeFile('stickers.json', r, function (err) {
