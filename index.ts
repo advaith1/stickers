@@ -1,7 +1,8 @@
 import express from 'express'
 import fetch from 'node-fetch'
 import path from 'path'
-
+import * as stickers from './stickers.json'
+import fs from 'fs'
 const app = express()
 app.set('view engine', 'ejs')
 
@@ -9,16 +10,18 @@ const token = process.env.TOKEN
 
 let cache: {
 	lastUpdated?: number
-	data?: object
 } = {}
 
 app.get('/', async (_, res) => {
 	if(!cache.data || Date.now() - cache.lastUpdated > 30000) {
 		const r = await fetch('https://discord.com/api/v8/sticker-packs/directory-v2/758482250722574376?with_store_listings=true', {headers: {authorization: `Bot ${token}`}})
-		cache.data = await r.json()
 		cache.lastUpdated = Date.now()
+		fs.writeFile('stickers.json', r, function (err) {
+  			if (err) console.log(err);
+  			console.log('Data updated.');
+		});
 	}
-	res.render('index', { data: cache.data })
+	res.render('index', { data: stickers })
 })
 
 app.get('/lottie/:id/:asset', async (req, res) => {
