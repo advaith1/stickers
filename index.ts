@@ -5,7 +5,6 @@ import path from 'path'
 const app = express()
 app.set('view engine', 'ejs')
 
-const token = process.env.TOKEN
 
 let cache: {
 	lastUpdated?: number
