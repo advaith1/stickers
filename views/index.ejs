@@ -3,13 +3,13 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Discord Sticker List</title>
-		<meta name="description" content="All the currently available Discord stickers">
+		<title>Discord Nitro Sticker List</title>
+		<meta name="description" content="All the currently available Discord Nitro stickers">
 		<link rel="shortcut icon" type="image/svg+xml" href="/img/icon.png">
 		<meta name="og:image" content="https://stickers.advaith.io/img/icon.png">
 		<link rel="stylesheet" href="/style.css">
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-5J8X1H60G1"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.6/lottie_light.min.js" integrity="sha512-u17Fj9cQ8L0qSebNF1zhbeAvbqSUBhX3jILF5zuZh2omdVev/zlHMeW0f2fDSW4o+/kbin6ZA9LtLfaXS0WIlQ==" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.9/lottie_light.min.js" integrity="sha512-ltKac/3nndizJUSC1QCJ81A63grzY2pt3tV6JoStBLdauqbN3fBpNHYVcBurVanF3e5hP3TKx/TGaoov4Y7jKw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 		<script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
 		<script>
 			window.dataLayer = window.dataLayer || [];
@@ -27,10 +27,10 @@
 					<div class="columns">
 						<div class="column is-three-quarters">
 							<h1 class="title is-2">
-								Discord Sticker List
+								Discord Nitro Sticker List
 							</h1>
 							<p class="subtitle is-4">
-								All the currently available <a target="_blank" rel="noopener" href="https://dis.gd/stickerswhen">Discord stickers</a>
+								All the currently available Discord Nitro <a target="_blank" rel="noopener" href="https://dis.gd/stickerswhen">stickers</a>
 							</p>
 							<p class="is-size-5 mb-1">
 								Hover over a sticker to show it
@@ -51,18 +51,17 @@
 		</section>
 		<section class="section pt-0">
 			<div class="container is-fluid">
-				<h1 class="title is-1">Sticker List is currently empty because Discord has ended their sticker store. Stay tuned <a href="https://twitter.com/advaithj1" target="_blank" rel="noopener"><img id="twitter" src="/img/twitter.svg" alt="Twitter" width="248" height="204"> @advaithj1</a></h1>
 				<div class="columns">
 					<% data.sticker_packs?.map(pack => { %>
 						<div class="column">
 							<picture>
-								<source srcset="https://cdn.discordapp.com/app-assets/710982414301790216/store/<%= pack.store_listing.thumbnail.id %>.webp?size=512" type="image/webp">
-								<source srcset="https://cdn.discordapp.com/app-assets/710982414301790216/store/<%= pack.store_listing.thumbnail.id %>.png?size=512" type="image/png">
-								<img src="https://cdn.discordapp.com/app-assets/710982414301790216/store/<%= pack.store_listing.thumbnail.id %>.png?size=512" width="440" height="100" alt="">
+								<source srcset="https://cdn.discordapp.com/app-assets/710982414301790216/store/<%= pack.banner_asset_id %>.webp?size=512" type="image/webp">
+								<source srcset="https://cdn.discordapp.com/app-assets/710982414301790216/store/<%= pack.banner_asset_id %>.png?size=512" type="image/png">
+								<img src="https://cdn.discordapp.com/app-assets/710982414301790216/store/<%= pack.banner_asset_id %>.png?size=512" width="440" height="100" alt="">
 							</picture>
 							<h2 class="title is-4"><%= pack.name %></h2>
 							<% pack.stickers.sort((a, b) => a.name.localeCompare(b.name)).map(sticker => { %>
-								<p><span class="sticker" data-id="<%= sticker.id %>" data-type="<%= sticker.format_type %>" data-asset="<%= sticker.asset %>" data-description="<%= sticker.description %>" data-tags="<%= sticker.tags %>"><%= sticker.name %></span></p>
+								<p><span class="sticker" data-id="<%= sticker.id %>" data-type="<%= sticker.format_type %>" data-description="<%= sticker.description %>" data-tags="<%= sticker.tags %>"><%= sticker.name %></span></p>
 							<% }) %>
 						</div>
 					<% }) %>
@@ -88,13 +87,13 @@
 					twemoji.parse(info, {folder: 'svg', ext: '.svg'})
 					if (sticker.type != 3) {
 						lottie.destroy()
-						img.src = `https://cdn.discordapp.com/stickers/${sticker.id}/${sticker.asset}.png`
+						img.src = `https://cdn.discordapp.com/stickers/${sticker.id}.png`
 					} else {
 						img.src = ''
 						lottie.destroy()
 						lottie.loadAnimation({
 							container,
-							path: `lottie/${sticker.id}/${sticker.asset}`,
+							path: `lottie/${sticker.id}`,
 							renderer: 'svg'
 						})
 					}
