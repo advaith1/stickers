@@ -14,7 +14,7 @@ let cache: {
 
 app.get('/', async (_, res) => {
 	if(!cache.data || Date.now() - cache.lastUpdated > 30000) {
-		const r = await fetch('https://discord.com/api/v9/sticker-packs', {headers: {authorization: `Bot ${token}`}})
+		const r = await fetch('https://discord.com/api/v10/sticker-packs', {headers: {authorization: `Bot ${token}`}})
 		cache.data = await r.json()
 		cache.lastUpdated = Date.now()
 	}
@@ -22,7 +22,7 @@ app.get('/', async (_, res) => {
 })
 
 app.get('/lottie/:id', async (req, res) => {
-	const r = await fetch(`https://storage.googleapis.com/discord/stickers/${req.params.id}.json`)
+	const r = await fetch(`https://discord.com/stickers/${req.params.id}.json`)
 	r.body.pipe(res)
 })
 
