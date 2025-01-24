@@ -1,16 +1,19 @@
 {
 	"dependencies": {
-		"bulma": "^0.9.1",
-		"dotenv": "^8.2.0",
-		"ejs": "^3.1.5",
-		"express": "^4.17.1",
-		"node-fetch": "^2.6.1"
+		"bulma": "0.9.2",
+		"dotenv": "^8.6.0",
+		"ejs": "^3.1.10",
+		"express": "^4.21.2",
+		"node-fetch": "^2.7.0",
+		"sass": "1.32.13"
 	},
 	"devDependencies": {
-		"@types/express": "^4.17.9",
-		"@types/node-fetch": "^2.5.7"
+		"@types/express": "^4.17.21",
+		"@types/node-fetch": "^2.6.12",
+		"typescript": "^5.7.3"
 	},
 	"scripts": {
+		"tsc": "tsc",
 		"start": "node -r dotenv/config out",
 		"sass": "sass --no-source-map style.sass out/style.css"
 	},
